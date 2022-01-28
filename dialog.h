@@ -1,7 +1,9 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
+#include <QtWidgets/QWidget>
 #include <QDialog>
+#include <QFileDialog>
 
 namespace Ui {
 class Dialog;

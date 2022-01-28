@@ -1,4 +1,4 @@
-QT -= gui
+QT += widgets
 QT += core gui
 QT += core gui serialport
 QT += core
