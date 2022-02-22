@@ -3,7 +3,6 @@
 
 #include <QAbstractTableModel>
 
-//#include "tableitem.h"
 #include "unitInformation.h"
 
 

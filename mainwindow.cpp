@@ -1,13 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tablemodel.h"
+#include "unitInformation.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     fsModel = new QFileSystemModel(this);
+    directory_model_ = new TableModel();
     //fsModel->setRootPath(QDir::currentPath());
     fsModel->setRootPath("C:/SPPO/LAB_3_1/TEST");
     fsModel->setFilter(QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::AllDirs);
@@ -24,6 +25,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView->header()->setStretchLastSection(false);
     ui->tableView->header()->setMinimumSectionSize(75);
     ui->tableView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+    QModelIndex index = fsModel->index("../TEST/");
+
+        while (index.isValid())
+        {
+            ui->treeView->expand(index);
+
+            index = index.parent();
+        }
 
     connect(ui->comboBox, &QComboBox::currentIndexChanged, this, &MainWindow::on_comboBox_currentIndexChanged);
     connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::on_treeView_clicked);
@@ -57,10 +67,7 @@ void MainWindow::patternUpdate()
 
             const QString path = fsModel->filePath(index);
 
-            pattern->GetDirectoryInfo(path);
-
             directory_model_->set_data((pattern->GetDirectoryInfo(path)));
-           // label_directory_->setText(path);
 
 
     }

@@ -7,7 +7,7 @@
 GroupingByType::GroupingByType(){
 
 }
-QList<UnitInformation> GroupingByType::GetDirectoryInfo(const QString &path)
+std::unique_ptr<QList<UnitInformation>> GroupingByType::GetDirectoryInfo(const QString &path)
 {
     QHash<QString, qint64> hash;
     QFileInfo dir_info(path);
@@ -25,13 +25,13 @@ QList<UnitInformation> GroupingByType::GetDirectoryInfo(const QString &path)
         hash[file_info.suffix()] += size;
         full_size += size;
     }
-    QList<UnitInformation> result_list;
+    std::unique_ptr<QList<UnitInformation>> result_list = std::make_unique<QList<UnitInformation>>();
     QHashIterator hash_iterator(hash);
 
     while (hash_iterator.hasNext())
     {
         hash_iterator.next();
-        result_list.append(UnitInformation("*." + hash_iterator.key(), hash_iterator.value(), full_size));
+        result_list->append(UnitInformation("*." + hash_iterator.key(), hash_iterator.value(), full_size));
     }
 
     return result_list;
