@@ -4,13 +4,10 @@
 #include <QAbstractTableModel>
 
 #include "unitInformation.h"
-
+#include "tablemodel.h"
 
 class TableModel : public QAbstractTableModel
 {
-public:
-    TableModel();
-
 public:
     enum Column
     {

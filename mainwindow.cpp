@@ -21,10 +21,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWin
     ui->treeView->hideColumn(3);
 
     ui->tableView->setModel(directory_model_);
-    ui->tableView->setRootIsDecorated(false);
-    ui->tableView->header()->setStretchLastSection(false);
-    ui->tableView->header()->setMinimumSectionSize(75);
-    ui->tableView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    //ui->tableView->setRootIsDecorated(false);
+    //ui->tableView->header()->setStretchLastSection(false);
+    //ui->tableView->header()->setMinimumSectionSize(75);
+    //ui->tableView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     QModelIndex index = fsModel->index("../TEST/");
 

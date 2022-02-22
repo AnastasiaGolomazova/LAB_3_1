@@ -33,7 +33,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *fsModel;
-    std::unique_ptr<GroupingPattern> pattern;
+    std::shared_ptr<GroupingPattern> pattern;
     TableModel *directory_model_;
 
 
