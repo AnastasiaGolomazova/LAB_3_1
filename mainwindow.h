@@ -3,10 +3,12 @@
 
 #include <QMainWindow>
 #include <QFileSystemModel>
+#include <QItemSelection>
 
 #include "groupingpattern.h"
 #include "groupingbytype.h"
 #include "groupingbyfolder.h"
+#include "tablemodel.h"
 
 
 namespace Ui {
@@ -26,10 +28,13 @@ public:
 private slots:
     void on_comboBox_currentIndexChanged(int index);
 
+    void on_treeView_clicked(const QItemSelection &selected, const QItemSelection &deselected);
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *fsModel;
-    std::unique_ptr<GroupingPattern> pattern;
+    std::shared_ptr<GroupingPattern> pattern;
+    TableModel *directory_model_;
 
 
 };

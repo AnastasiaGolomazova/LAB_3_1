@@ -14,7 +14,8 @@ SOURCES += \
         groupingbyfolder.cpp \
         groupingbytype.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        tablemodel.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -26,6 +27,7 @@ HEADERS += \
     groupingbytype.h \
     groupingpattern.h \
     mainwindow.h \
+    tablemodel.h \
     unitInformation.h
 
 FORMS += \

@@ -9,7 +9,7 @@ class GroupingByFolder : public GroupingPattern
 {
 public:
     GroupingByFolder();
-    QList<UnitInformation> GetDirectoryInfo(const QString &path) override  ;
+    QList<UnitInformation> GetDirectoryInfo(const QString &path) override;
 };
 
 #endif // GROUPINGBYFOLDER_H
