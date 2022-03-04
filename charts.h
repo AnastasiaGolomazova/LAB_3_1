@@ -16,7 +16,7 @@ public:
 
     QChart *CreateChart(const std::unique_ptr<QList<UnitInformation>> &items) const;
 
-    virtual void DrawChart(QChart *chart, const std::unique_ptr<QList<UnitInformation>> &items) const = 0; // уникальный шаг алгоритма
+    virtual void DrawChart(QChart *chart, const std::unique_ptr<QList<UnitInformation>> &items) const = 0;
     void DrawLegend(QLegend *legend) const;
 };
 

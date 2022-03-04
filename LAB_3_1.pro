@@ -15,9 +15,6 @@ HEADERS += \
     charts.h \
     directoryobserver.h \
     groupbystrategy.h \
-    groupingbyfolder.h \
-    groupingbytype.h \
-    groupingpattern.h \
     listadapter.h \
     mainwindow.h \
     tablemodel.h \
@@ -27,8 +24,6 @@ SOURCES += \
     chartadapters.cpp \
     charts.cpp \
     groupbystrategy.cpp \
-    groupingbyfolder.cpp \
-    groupingbytype.cpp \
     listadapter.cpp \
     main.cpp \
     mainwindow.cpp \
