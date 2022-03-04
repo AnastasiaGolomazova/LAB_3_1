@@ -31,7 +31,6 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
              return Qt::AlignRight;
         }
     case Qt::DisplayRole:
-    case Qt::EditRole:
         {
             const UnitInformation &item = data_->at(index.row());
 
@@ -70,7 +69,7 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
     return QVariant();
 }
 
-void TableModel::set_data(std::unique_ptr<QList<UnitInformation>> &&data)
+void TableModel::set_data(std::unique_ptr<QList<UnitInformation>> &data)
 {
     if (!data)
     {

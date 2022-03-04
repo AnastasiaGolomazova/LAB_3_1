@@ -54,6 +54,41 @@
      </property>
     </item>
    </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>478</x>
+      <y>10</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>List</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>PieChart</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>BarChart</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>260</y>
+      <width>461</width>
+      <height>271</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

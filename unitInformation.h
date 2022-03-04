@@ -23,6 +23,10 @@ public:
         if (percentage_size < 0.01f) { return "< 0.01 %"; }
         return QString::number(percentage_size, 'f', 2) + " %";
     }
+    bool operator>(const UnitInformation &obj) const
+    {
+        return size_byte_ > obj.GetSizeKb();
+    }
 
 private:
     static const QLocale locale_;

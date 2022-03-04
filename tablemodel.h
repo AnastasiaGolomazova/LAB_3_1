@@ -24,7 +24,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
 
-    void set_data(std::unique_ptr<QList<UnitInformation>> &&data);
+    void set_data(std::unique_ptr<QList<UnitInformation>> &data);
 
 private:
     std::unique_ptr<QList<UnitInformation>> data_;
