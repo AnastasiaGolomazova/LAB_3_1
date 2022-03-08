@@ -56,6 +56,7 @@ private:
     void combo_box_group_by_OnChanged(const int index);
     void combo_box_display_in_OnChanged(const int index);
     void tree_view_OnChanged(const QModelIndex &current, const QModelIndex &previous);
+    void show_graphs();
 
 };
 

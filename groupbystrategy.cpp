@@ -3,7 +3,7 @@
 
 void GroupByStrategy::Attach(directoryObserver *observer)
 {
-    qDebug() << "DEBUGGG!!!";
+    //qDebug() << "DEBUGGG!!!";
     if (observer == nullptr)
     {
         throw std::runtime_error("The observer is nullptr.");

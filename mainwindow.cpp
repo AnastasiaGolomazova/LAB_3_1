@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "tablemodel.h"
 #include "unitInformation.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow),group_by_folder_(new GroupByFolder()), group_by_type_(new GroupByType()), strategy_(nullptr), directory_view_(nullptr)
 {
@@ -30,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWin
     connect(ui->comboBox_2, &QComboBox::activated, this, &MainWindow::on_comboBox_2_activated);
     connect(ui->comboBox, &QComboBox::currentIndexChanged, this, &MainWindow::on_comboBox_currentIndexChanged);
     connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::on_treeView_clicked);
+
+
 }
 
 
@@ -44,26 +47,13 @@ void MainWindow::select_folder(QString path){
         while (index.isValid())
         {
             ui->treeView->expand(index);
-
-
             index = index.parent();
         }
 }
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
-        if (index == 0) {
-            strategy_ = group_by_folder_;
-        }
-       else if(index == 1){
-            strategy_ = group_by_type_;
-        }
-        if (directory_view_ != nullptr)
-        {
-            strategy_->Attach(directory_view_);
-
-            patternUpdate();
-        }
+    show_graphs();
 }
 
 void MainWindow::patternUpdate()
@@ -73,6 +63,7 @@ void MainWindow::patternUpdate()
     if (index.isValid())
     {
         const QString path = fsModel->filePath(index);
+        qDebug() << path;
 
         strategy_->Explore(path);
 
@@ -81,25 +72,41 @@ void MainWindow::patternUpdate()
 
 void MainWindow::on_treeView_clicked(const QItemSelection &selected, const QItemSelection &deselected)
 {
-    if (!selected.isEmpty()) {
-        patternUpdate();
-    }
-
+    show_graphs();
 }
 
 void MainWindow::on_comboBox_2_activated(int index)
 {
+    show_graphs();
+}
+
+void MainWindow::show_graphs()
+{
+    //-> comboBox 1
+    int index = ui->comboBox->currentIndex();
+
     if (index == 0) {
-        directory_view_ = pie_chart_adapter_;
+        strategy_ = group_by_folder_;
+    }else{
+        strategy_ = group_by_type_;
     }
-   else if(index == 1){
+
+    //-> comboBox 2
+    index = ui->comboBox_2->currentIndex();
+
+    if(index==0){
+        directory_view_ = list_adapter_;
+    }else if(index==1){
+        directory_view_ = list_adapter_;
+    }
+    else {
         directory_view_ = bar_chart_adapter_;
     }
-    else if(index == 2){
-         directory_view_ = list_adapter_;
-     }
+
     strategy_->Attach(directory_view_);
     patternUpdate();
     ui->stackedWidget->setCurrentIndex(index);
+    ui->stackedWidget->update();
+
 }
 

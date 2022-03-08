@@ -38,7 +38,7 @@ QChart *Chart::CreateChart(const std::unique_ptr<QList<UnitInformation>> &items)
 
     DrawLegend(chart->legend());
     DrawChart(chart, items);
-    qDebug() << "Chart Create!";
+    //qDebug() << "Chart Create!";
 
     return chart;
 }
